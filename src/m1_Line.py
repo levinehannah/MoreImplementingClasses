@@ -227,7 +227,9 @@ class Line(object):
         # --------------------------------------------------------------
         self.start = start.clone()
         self.end = end.clone()
-
+        self.stuff = 0
+        self.orgstar = self.start.clone()
+        self.orgen = self.end.clone()
 
     def __repr__(self):
         """
@@ -337,6 +339,7 @@ class Line(object):
         #        The tests are already written (below).
         #        They include the Example in the above doc-string.
         # --------------------------------------------------------------
+        self.stuff += 1
         line = Line(self.start, self.end)
         return line
 
@@ -487,7 +490,7 @@ class Line(object):
           :rtype: int:
         """
         # --------------------------------------------------------------
-        # TODO: 8.
+        # DONE: 8.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -495,6 +498,7 @@ class Line(object):
         #        The tests are already written (below).
         #        They include the Example in the above doc-string.
         # --------------------------------------------------------------
+        return self.stuff
 
     def line_plus(self, other_line):
         """
@@ -694,7 +698,7 @@ class Line(object):
             print(line2)  # Should print: Line[(0, 1), (10, 20)]
         """
         # --------------------------------------------------------------
-        # TODO: 13.
+        # DONE: 13.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -702,7 +706,8 @@ class Line(object):
         #        The tests are already written (below).
         #        They include the Example in the above doc-string.
         # --------------------------------------------------------------
-
+        self.start = self.orgstar
+        self.end = self.orgen
 
 ########################################################################
 # The TEST functions for the  Line  class begin here.
