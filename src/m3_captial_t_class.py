@@ -16,7 +16,7 @@ def main():
 
     run_test_simple_t()
     run_test_set_colors()
-    # run_test_move_by()
+    run_test_move_by()
     # run_test_clone()
 
 
@@ -177,6 +177,7 @@ class CapitalT(object):
         window.render(0.2)
         return
 
+
     def set_colors(self, fill_color, outline_color):
         """
         What comes in:
@@ -198,16 +199,16 @@ class CapitalT(object):
           :type outline_color: str
         """
         # --------------------------------------------------------------
-        # TODO: 5.
+        # DONE: 5.
         #   READ the above specification, including the Example.
         #   Implement and test this method by uncommenting the appropriate
         #     run_test method in main. Compare the graphics window to
         #     set_colors.pdf.
         # --------------------------------------------------------------
-        self.h_rect = fill_color
-        self.h_rect = outline_color
-        self.v_rect = fill_color
-        self.v_rect = outline_color
+        self.v_rect.fill_color = fill_color
+        self.h_rect.fill_color = fill_color
+        self.v_rect.outline_color = outline_color
+        self.h_rect.outline_color = outline_color
 
     def move_by(self, dx, dy):
         """
@@ -239,6 +240,14 @@ class CapitalT(object):
         #     move_by.pdf. Note: the pdf shows the different locations
         #     that the T moves through, but there is only 1 T at any moment.
         # --------------------------------------------------------------
+        self.newh = rg.Rectangle(rg.Point(self.h_rect.get_upper_left_corner().x +
+                    dx, self.h_rect.get_upper_left_corner().y + dy),
+                    rg.Point(self.h_rect.get_lower_right_corner().x + dx,
+                    self.h_rect.get_lower_right_corner().y + dy))
+        self.newv = rg.Rectangle(rg.Point(self.v_rect.get_upper_left_corner().x +
+                    dx, self.v_rect.get_upper_left_corner().y + dy),
+                    rg.Point(self.v_rect.get_lower_right_corner().x + dx,
+                    self.v_rect.get_lower_right_corner().y + dy))
 
     def clone(self):
         """
@@ -266,7 +275,6 @@ class CapitalT(object):
         #     run_test method in main. Compare the graphics window to
         #     clone.pdf.
         # --------------------------------------------------------------
-
 
 # ----------------------------------------------------------------------
 # If this module is running at the top level (as opposed to being
