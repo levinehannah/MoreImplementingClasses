@@ -165,6 +165,7 @@ class CapitalT(object):
         #   Implement and test this method by looking at the console and
         #     the graphics window (compare it to simple_t.pdf)
         # --------------------------------------------------------------
+        self.re
 
     def set_colors(self, fill_color, outline_color):
         """
