@@ -14,8 +14,8 @@ def main():
     #   Uncomment only 1 test at a time as you develop your code.
     # --------------------------------------------------------------
 
-    # run_test_simple_t()
-    # run_test_set_colors()
+    run_test_simple_t()
+    run_test_set_colors()
     # run_test_move_by()
     # run_test_clone()
 
@@ -135,11 +135,18 @@ class CapitalT(object):
           :type letter_thickness:   int
         """
         # --------------------------------------------------------------
-        # TODO: 3.
+        # DONE: 3.
         #   READ the above specification, including the Example.
         #   Implement this method
         #   Note: you will need to also implement attach_to before testing
         # --------------------------------------------------------------
+        self.point = intersection_center
+        upperleft = rg.Point(self.point.x - width / 2, self.point.y - letter_thickness/2)
+        lowerright = rg.Point(self.point.x + width / 2, self.point.y + letter_thickness/2)
+        self.h_rect = rg.Rectangle(upperleft, lowerright)
+        upleftv = rg.Point(self.point.x - letter_thickness/2, self.point.y - letter_thickness/2)
+        lowritv = rg.Point(self.point.x + letter_thickness/2, ((self.point.y - letter_thickness/2)+ height) )
+        self.v_rect = rg.Rectangle(upleftv,lowritv)
 
     def attach_to(self, window):
         """
@@ -160,12 +167,15 @@ class CapitalT(object):
           :type window: rg.RoseWindow
         """
         # --------------------------------------------------------------
-        # TODO: 4.
+        # DONE: 4.
         #   READ the above specification, including the Example.
         #   Implement and test this method by looking at the console and
         #     the graphics window (compare it to simple_t.pdf)
         # --------------------------------------------------------------
-        self.re
+        self.v_rect.attach_to(window)
+        self.h_rect.attach_to(window)
+        window.render(0.2)
+        return
 
     def set_colors(self, fill_color, outline_color):
         """
@@ -194,6 +204,10 @@ class CapitalT(object):
         #     run_test method in main. Compare the graphics window to
         #     set_colors.pdf.
         # --------------------------------------------------------------
+        self.h_rect = fill_color
+        self.h_rect = outline_color
+        self.v_rect = fill_color
+        self.v_rect = outline_color
 
     def move_by(self, dx, dy):
         """
