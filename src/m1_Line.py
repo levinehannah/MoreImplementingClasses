@@ -228,8 +228,8 @@ class Line(object):
         self.start = start.clone()
         self.end = end.clone()
         self.stuff = 0
-        self.orgstar = self.start.clone()
-        self.orgen = self.end.clone()
+        self.orgstart = self.start.clone()
+        self.orgend = self.end.clone()
 
     def __repr__(self):
         """
@@ -376,10 +376,10 @@ class Line(object):
         #        They include the Example in the above doc-string.
         # --------------------------------------------------------------
 
-        revstart = self.start
+        revestart = self.start
         self.start = self.end
-        self.end = revstart
-        reverse = Line(self.end, revstart)
+        self.end = revestart
+        reverse = Line(self.end, revestart)
         return reverse
 
     def slope(self):
@@ -706,8 +706,8 @@ class Line(object):
         #        The tests are already written (below).
         #        They include the Example in the above doc-string.
         # --------------------------------------------------------------
-        self.start = self.orgstar
-        self.end = self.orgen
+        self.start = self.orgstart
+        self.end = self.orgend
 
 ########################################################################
 # The TEST functions for the  Line  class begin here.
