@@ -17,7 +17,7 @@ def main():
     run_test_simple_t()
     run_test_set_colors()
     run_test_move_by()
-    # run_test_clone()
+    run_test_clone()
 
 
 def run_test_simple_t():
@@ -240,14 +240,14 @@ class CapitalT(object):
         #     move_by.pdf. Note: the pdf shows the different locations
         #     that the T moves through, but there is only 1 T at any moment.
         # --------------------------------------------------------------
-        self.newh = rg.Rectangle(rg.Point(self.h_rect.get_upper_left_corner().x +
-                    dx, self.h_rect.get_upper_left_corner().y + dy),
-                    rg.Point(self.h_rect.get_lower_right_corner().x + dx,
-                    self.h_rect.get_lower_right_corner().y + dy))
-        self.newv = rg.Rectangle(rg.Point(self.v_rect.get_upper_left_corner().x +
-                    dx, self.v_rect.get_upper_left_corner().y + dy),
-                    rg.Point(self.v_rect.get_lower_right_corner().x + dx,
-                    self.v_rect.get_lower_right_corner().y + dy))
+        self.h_rect.corner_1.x += dx
+        self.h_rect.corner_1.y += dy
+        self.h_rect.corner_2.x += dx
+        self.h_rect.corner_2.y += dy
+        self.v_rect.corner_1.x += dx
+        self.v_rect.corner_1.y += dy
+        self.v_rect.corner_2.x += dx
+        self.v_rect.corner_2.y += dy
 
     def clone(self):
         """
@@ -269,12 +269,21 @@ class CapitalT(object):
           :rtype: CapitalT
         """
         # --------------------------------------------------------------
-        # TODO: 7.
+        # DONE: 7.
         #   READ the above specification, including the Example.
         #   Implement and test this method by uncommenting the appropriate
         #     run_test method in main. Compare the graphics window to
         #     clone.pdf.
         # --------------------------------------------------------------
+        centt = self.h_rect.get_center()
+        widd = self.h_rect.get_width()
+        heii = self.v_rect.get_height()
+        thicc = self.v_rect.get_width()
+        capt = CapitalT(centt, widd, heii, thicc)
+        fillcolorr = self.h_rect.fill_color
+        out = self.h_rect.outline_color
+        capt.set_colors(fillcolorr, out)
+        return capt
 
 # ----------------------------------------------------------------------
 # If this module is running at the top level (as opposed to being
